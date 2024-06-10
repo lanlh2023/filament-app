@@ -2,7 +2,7 @@
 
 return [
 
-    'label' => 'Company test E',
+    'label' => '会社',
 
     'actions' => [
 

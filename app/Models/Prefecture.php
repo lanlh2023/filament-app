@@ -16,4 +16,9 @@ class Prefecture extends Model
 	{
 		 return $this->hasMany(Company::class);
 	}
+
+	public function recruits() : HasMany
+	{
+		 return $this->hasMany(Recruit::class);
+	}
 }

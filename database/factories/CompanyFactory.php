@@ -20,7 +20,7 @@ class CompanyFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
-			'prefecture_id' => random_int(1,5), 
+			'prefecture_id' => $this->faker->randomElement(Prefecture::all()->pluck('id')), 
         ];
     }
 }

@@ -7,7 +7,9 @@ use App\Models\Company;
 use App\Models\Prefecture;
 use App\Models\Recruit;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -30,24 +32,37 @@ class RecruitResource extends Resource
 	public static function form(Form $form): Form
 	{
 		return $form
+
 			->schema([
-				TextInput::make('name')
-					->required()
-					->maxLength(255),
-				DatePicker::make('start_date'),
-				DatePicker::make('end_date'),
-				Select::make('prefecture_id')
-					->label('Prefectures')
-					->options(Prefecture::all()->pluck('name', 'id'))
-					->searchable()
-					->live(),
-				Select::make('company_id')
-					->options(fn (Get $get): Collection => Company::query()
-						->where('prefecture_id', $get('prefecture_id'))
-						->pluck('name', 'id'))
-				// Forms\Components\Select::make('prefecture_id')
-				// 	->relationship('prefecture', 'name')
-				// 	->required(),
+				Section::make()->schema([
+					TextInput::make('name')
+						->required()
+						->maxLength(255),
+					DatePicker::make('start_date'),
+					DatePicker::make('end_date'),
+					Select::make('prefecture_id')
+						->label('Prefectures')
+						->options(Prefecture::all()->pluck('name', 'id'))
+						->searchable()
+						->live(),
+					Select::make('company_id')
+						->options(fn (Get $get): Collection => Company::query()
+							->where('prefecture_id', $get('prefecture_id'))
+							->pluck('name', 'id'))
+					// Forms\Components\Select::make('prefecture_id')
+					// 	->relationship('prefecture', 'name')
+					// 	->required(),
+				])->columns(2),
+				Section::make('Images')
+					->schema([
+						SpatieMediaLibraryFileUpload::make('media')
+							->disk('s3')
+							->collection('product-images')
+							->multiple()
+							->maxFiles(5)
+							->hiddenLabel(),
+					])
+					->collapsible(),
 			]);
 	}
 

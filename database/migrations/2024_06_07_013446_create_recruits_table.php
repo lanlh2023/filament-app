@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->date('start_date')->nullable();
 			$table->date('end_date')->nullable();
 			$table->foreignId('company_id')->constrained('companies')->cascadeOnDelete();
+			$table->foreignId('prefecture_id')->constrained('prefectures')->cascadeOnDelete();
             $table->timestamps();
         });
     }

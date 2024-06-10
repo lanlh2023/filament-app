@@ -21,10 +21,10 @@ class CompanyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 	
-	public static function getNavigationLabel(): string
-    {
-        return __('filament-panels::pages/company.label');
-    }
+	// public static function getNavigationLabel(): string
+    // {
+    //     return __('filament-panels::pages/company.label');
+    // }
 
     public static function form(Form $form): Form
     {
