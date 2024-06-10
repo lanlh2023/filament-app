@@ -22,6 +22,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class RecruitResource extends Resource
 {
@@ -138,6 +139,7 @@ class RecruitResource extends Resource
 			->bulkActions([
 				Tables\Actions\BulkActionGroup::make([
 					Tables\Actions\DeleteBulkAction::make(),
+                    ExportBulkAction::make()
 				]),
 			]);
 	}
