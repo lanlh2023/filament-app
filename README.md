@@ -1,66 +1,29 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Research: building filamnent page
+# Set up Develop
+## Packe required 
+docker-sail、docker-compose, Laravel(^10.10), filament/filament(^3.2), vuejs(^2.6.12),flowframe/laravel-trend(^0.2.0), league/flysystem-aws-s3-v3(^3.0), filament/spatie-laravel-media-library-plugin(3.2),...
+## Execute only once when building the development environment
+- `composer install`
+- `alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'`
+- `sail up -d`
+- `sail artisan db:seed`
+## List of feature
+- [X] Login, logout Page.
+- [X] Notifications.
+- [X] Manage Company: CRUD. 
+- [X] Manage Recruit: CRUD. 
+- [X] Search and export csv Recruit.
+## Images of feature
+# Home
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/db5bc7b9-a6e3-4457-a738-0c52ac606758)
+# Admin notification
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/05aa48ed-7b5b-45e8-a3bf-a006ed5ff853)
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/eb68ae18-b619-4706-9697-5e607fe1ffc1)
+# Recruit
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/ba444b8d-86db-409c-8352-8757b16bfbfd)
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/85138d41-3104-41be-8a32-372586c078ce)
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/d22a784f-864c-434b-87d8-d1c2aef5d161)
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/1135e3cd-0ea2-441c-ab9b-22a1d4c8d872)
+![image](https://github.com/lanlh2023/filament-app/assets/147787873/ca1c74eb-dd1c-4565-862e-9c5808396cbd)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
