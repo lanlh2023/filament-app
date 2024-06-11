@@ -6,7 +6,7 @@ docker-sail、docker-compose, Laravel(^10.10), filament/filament(^3.2), vuejs(^2
 - `composer install`
 - `alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'`
 - `sail up -d`
-- `sail artisan db:seed`
+- `sail artisan migrate --seed`
 ## List of feature
 - [X] Login, logout Page.
 - [X] Notifications.
