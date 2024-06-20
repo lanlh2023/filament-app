@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Prefecture;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +18,9 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->company(),
             'address' => $this->faker->address(),
-			'prefecture_id' => $this->faker->randomElement(Prefecture::all()->pluck('id')), 
+            'user_id' => User::factory()
         ];
     }
 }

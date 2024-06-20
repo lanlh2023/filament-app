@@ -10,15 +10,14 @@ class Prefecture extends Model
 {
     use HasFactory;
 
-	protected $guarded = [];
-
-	public function companies() : HasMany
-	{
-		 return $this->hasMany(Company::class);
-	}
+	protected $fillable = [
+        'area_name',
+        'name',
+        'cnt'
+    ];
 
 	public function recruits() : HasMany
 	{
-		 return $this->hasMany(Recruit::class);
+		return $this->hasMany(Recruit::class);
 	}
 }

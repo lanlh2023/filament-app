@@ -15,6 +15,10 @@ class RecruitExport extends Exporter
     {
         return [
             ExportColumn::make('name'),
+            ExportColumn::make('title'),
+            ExportColumn::make('description'),
+            ExportColumn::make('company.name'),
+            ExportColumn::make('prefecture.name'),
             ExportColumn::make('start_date'),
             ExportColumn::make('end_date'),
         ];

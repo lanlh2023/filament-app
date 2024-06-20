@@ -10,15 +10,16 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
-// use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -37,7 +38,10 @@ class RecruitResource extends Resource
 
 			->schema([
 				Section::make()->schema([
-					TextInput::make('name')
+					TextInput::make('title')
+						->required()
+						->maxLength(255),
+					Textarea::make('description')
 						->required()
 						->maxLength(255),
 					DatePicker::make('start_date'),
@@ -49,22 +53,10 @@ class RecruitResource extends Resource
 						->live(),
 					Select::make('company_id')
 						->options(fn (Get $get): Collection => Company::query()
-							->where('prefecture_id', $get('prefecture_id'))
-							->pluck('name', 'id'))
-					// Forms\Components\Select::make('prefecture_id')
-					// 	->relationship('prefecture', 'name')
-					// 	->required(),
+						->pluck('name', 'id'))
+						->searchable()
+						->live(),
 				])->columns(2),
-				Section::make('Images')
-					->schema([
-						SpatieMediaLibraryFileUpload::make('media')
-							->disk('s3')
-							->collection('product-images')
-							->multiple()
-							->maxFiles(5)
-							->hiddenLabel(),
-					])
-					->collapsible(),
 			]);
 	}
 
@@ -72,22 +64,30 @@ class RecruitResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('name')
-					->searchable(),
-				Tables\Columns\TextColumn::make('start_date')
+				TextColumn::make('title')
+					->searchable()
+					->sortable(),
+				TextColumn::make('description')
+					->searchable()
+					->sortable()
+					->toggleable(isToggledHiddenByDefault: true),
+				TextColumn::make('start_date')
 					->date()
 					->sortable(),
-				Tables\Columns\TextColumn::make('end_date')
+				TextColumn::make('end_date')
 					->date()
 					->sortable(),
-				Tables\Columns\TextColumn::make('company.name')
+				TextColumn::make('company.name')
 					->numeric()
 					->sortable(),
-				Tables\Columns\TextColumn::make('created_at')
+				TextColumn::make('prefecture.name')
+					->numeric()
+					->sortable(),
+				TextColumn::make('created_at')
 					->dateTime()
 					->sortable()
 					->toggleable(isToggledHiddenByDefault: true),
-				Tables\Columns\TextColumn::make('updated_at')
+				TextColumn::make('updated_at')
 					->dateTime()
 					->sortable()
 					->toggleable(isToggledHiddenByDefault: true),
@@ -95,15 +95,22 @@ class RecruitResource extends Resource
 			->filters([
 				Filter::make('filter')
 					->form([
-						DatePicker::make(__('start_date')),
-						DatePicker::make('end_date'),
 						Select::make('company_id')
 							->relationship('company', 'name')
 							->searchable()
 							->preload()
-							->placeholder('all')
+							->placeholder('all'),
+						Select::make('prefecture_id')
+							->relationship('prefecture', 'name')
+							->searchable()
+							->preload()
+							->placeholder('all'),
+						TextInput::make('title'),
+						TextInput::make('description'),
+						DatePicker::make(__('start_date')),
+						DatePicker::make('end_date'),
 					])
-					->columns(3)
+					->columns(2)
 					->query(function (Builder $query, array $data): Builder {
 						return $query
 							->when(
@@ -117,14 +124,16 @@ class RecruitResource extends Resource
 							->when(
 								$data['company_id'],
 								fn (Builder $query, $companyId): Builder => $query->where('company_id', $companyId),
+							)
+							->when(
+								$data['title'],
+								fn (Builder $query, $title): Builder => $query->where('title', 'LIKE', "%$title%")
+							)
+							->when(
+								$data['description'],
+								fn (Builder $query, $description): Builder => $query->where('description', 'LIKE', "%$description%")
 							);
 					}),
-				// SelectFilter::make('company')
-				// 	->relationship('company', 'name')
-				// 	->searchable()
-				// 	->preload()
-				// 	->placeholder('')
-				// 	->columns(2)
 			], layout: FiltersLayout::AboveContent)
 			->filtersFormColumns(1)
 			->deferFilters()
@@ -139,9 +148,9 @@ class RecruitResource extends Resource
 			])
 			->bulkActions([
 				Tables\Actions\BulkActionGroup::make([
-                    ExportBulkAction::make()->exports([
-                        ExcelExport::make()->fromTable()->queue()
-                    ]),
+					ExportBulkAction::make()->exports([
+						ExcelExport::make()->fromTable()->queue()
+					]),
 					Tables\Actions\DeleteBulkAction::make(),
 				]),
 			]);

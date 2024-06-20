@@ -2,15 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Prefecture;
+use App\Models\ShokushuItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Prefecture>
- */
-class PrefectureFactory extends Factory
+class ShokushuItemFactory extends Factory
 {
-    protected $model = Prefecture::class;
+	protected $model = ShokushuItem::class;
     /**
      * Define the model's default state.
      *
@@ -19,8 +16,8 @@ class PrefectureFactory extends Factory
     public function definition(): array
     {
         return [
-            'area_name' => $this->faker->address(),
             'name' => $this->faker->address(),
+            'snum' => random_int(10, 99999),
         ];
     }
 }

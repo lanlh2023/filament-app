@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('shokushu_items', function (Blueprint $table) {
             $table->id();
-			$table->string('name', 255);
-			$table->string('address', 255);
-			$table->foreignId('prefecture_id')->constrained('prefectures')->cascadeOnDelete();
+			$table->string('name');
+			$table->integer('snum');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('shokushu_items');
     }
 };

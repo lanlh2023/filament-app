@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Company;
-use Carbon\Carbon;
+use App\Models\Prefecture;
+use App\Models\Recruit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class RecruitFactory extends Factory
 {
+    protected $model = Recruit::class;
     /**
      * Define the model's default state.
      *
@@ -18,12 +20,13 @@ class RecruitFactory extends Factory
      */
     public function definition(): array
     {
-		$date = Carbon::now();
         return [
-			'name' => $this->faker->name(),
-			'company_id' => Company::factory(),
-			'start_date' => $date,
-			'end_date' => $date->addDays(30)
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'company_id' => Company::factory(),
+			'prefecture_id' => Prefecture::factory(),
         ];
     }
 }

@@ -13,13 +13,14 @@ class Company extends Model
 
 	protected $guarded = [];
 
-	public function recruits() : HasMany
-	{
-		 return $this->hasMany(Recruit::class);
-	}
+	protected $fillable = [
+        'name',
+        'address',
+        'user_id'
+    ];
 
-	public function prefecture() : BelongsTo
-	{
-		 return $this->belongsTo(Company::class);
-	}
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

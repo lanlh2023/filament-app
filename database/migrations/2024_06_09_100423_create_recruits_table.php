@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Company;
+use App\Models\Prefecture;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('recruits', function (Blueprint $table) {
             $table->id();
-			$table->string('name', 255);
-			$table->date('start_date')->nullable();
-			$table->date('end_date')->nullable();
-			$table->foreignId('company_id')->constrained('companies')->cascadeOnDelete();
-			$table->foreignId('prefecture_id')->constrained('prefectures')->cascadeOnDelete();
+            $table->string('title');
+            $table->text('description');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->foreignIdFor(Company::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Prefecture::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
