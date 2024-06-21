@@ -57,8 +57,17 @@ class RecruitResource extends Resource
 							->pluck('name', 'id'))
 						->searchable()
 						->live(),
-
 				])->columns(2),
+				Section::make('Images')
+					->schema([
+						SpatieMediaLibraryFileUpload::make('media')
+							->disk('s3')
+							->collection('product-images')
+							->multiple()
+							->maxFiles(5)
+							->hiddenLabel(),
+					])
+					->collapsible(),
 				Section::make()->schema([
 					CheckboxList::make('shokushuItems')
 						->label('Shokushu items')
