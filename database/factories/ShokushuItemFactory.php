@@ -16,7 +16,7 @@ class ShokushuItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->address(),
+            'name' => $this->faker->words(rand(3, 6), true),
             'snum' => random_int(10, 99999),
         ];
     }

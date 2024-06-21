@@ -6,6 +6,7 @@ use App\Filament\Resources\RecruitResource\Pages;
 use App\Models\Company;
 use App\Models\Prefecture;
 use App\Models\Recruit;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -53,10 +54,17 @@ class RecruitResource extends Resource
 						->live(),
 					Select::make('company_id')
 						->options(fn (Get $get): Collection => Company::query()
-						->pluck('name', 'id'))
+							->pluck('name', 'id'))
 						->searchable()
 						->live(),
+
 				])->columns(2),
+				Section::make()->schema([
+					CheckboxList::make('shokushuItems')
+						->label('Shokushu items')
+						->relationship('shokushuItems', 'name')
+						->columns(4)
+				])
 			]);
 	}
 
@@ -105,6 +113,11 @@ class RecruitResource extends Resource
 							->searchable()
 							->preload()
 							->placeholder('all'),
+						Select::make('shokushuItems')
+							->searchable()
+							->preload()
+							->multiple()
+							->relationship('shokushuItems', 'name'),
 						TextInput::make('title'),
 						TextInput::make('description'),
 						DatePicker::make(__('start_date')),
@@ -132,6 +145,12 @@ class RecruitResource extends Resource
 							->when(
 								$data['description'],
 								fn (Builder $query, $description): Builder => $query->where('description', 'LIKE', "%$description%")
+							)
+							->when(
+								$data['shokushuItems'],
+								fn (Builder $query, $shokushuItemIds): Builder => $query->whereHas('shokushuItems', function (Builder $query) use ($shokushuItemIds) {
+									$query->whereIn('shokushu_item_id', $shokushuItemIds);
+								})
 							);
 					}),
 			], layout: FiltersLayout::AboveContent)
