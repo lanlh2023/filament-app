@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Apply\Models;
 
+use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Prefecture extends Model
+class Prefecture extends BaseModel
 {
     use HasFactory;
 

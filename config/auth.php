@@ -66,12 +66,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => Domain\Apply\Models\User::class,
         ],
 
         'shops' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Shop::class,
+            'model' => Domain\Apply\Models\Shop::class,
         ],
 
         // 'users' => [

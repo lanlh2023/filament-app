@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\User;
+use Domain\Apply\Models\User;
 use Database\Seeders\Apply\ApplySeeder;
 use Illuminate\Database\Seeder;
 

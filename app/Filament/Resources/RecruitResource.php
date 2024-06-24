@@ -3,9 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RecruitResource\Pages;
-use App\Models\Company;
-use App\Models\Prefecture;
-use App\Models\Recruit;
+use Domain\Apply\Models\Company;
+use Domain\Apply\Models\Prefecture;
+use Domain\Apply\Models\Recruit;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
@@ -18,6 +18,7 @@ use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
@@ -100,6 +101,8 @@ class RecruitResource extends Resource
 				TextColumn::make('prefecture.name')
 					->numeric()
 					->sortable(),
+				SpatieMediaLibraryImageColumn::make('image')
+					->collection('product-images'),
 				TextColumn::make('created_at')
 					->dateTime()
 					->sortable()

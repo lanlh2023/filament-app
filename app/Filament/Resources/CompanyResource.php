@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
-use App\Models\Company;
-use App\Models\Prefecture;
-use Filament\Forms;
+use Domain\Apply\Models\Company;
+use Domain\Apply\Models\Prefecture;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -17,7 +15,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class CompanyResource extends Resource
