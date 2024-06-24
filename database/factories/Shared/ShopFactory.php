@@ -1,7 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Shared;
 
+use Domain\Shared\Models\Shop;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ShopFactory extends Factory
 {
+	protected $model = Shop::class;
     /**
      * Define the model's default state.
      *

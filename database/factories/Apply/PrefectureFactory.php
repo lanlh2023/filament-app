@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Apply;
 
-use App\Models\Prefecture;
+use Domain\Apply\Models\Prefecture;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Prefecture>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domain\Apply\Models\Prefecture>
  */
 class PrefectureFactory extends Factory
 {

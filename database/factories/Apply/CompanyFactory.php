@@ -1,8 +1,9 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Apply;
 
-use App\Models\User;
+use Domain\Apply\Models\Company;
+use Domain\Shared\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CompanyFactory extends Factory
 {
+	protected $model = Company::class;
     /**
      * Define the model's default state.
      *

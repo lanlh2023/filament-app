@@ -1,7 +1,8 @@
 <?php
 
-namespace Domain\Apply\Models;
+namespace Domain\Shared\Models;
 
+use Database\Factories\Shared\ShopFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -19,4 +20,9 @@ class Shop extends Authenticatable
         'password',
         'remember_token',
     ];
+
+	protected static function newFactory()
+    {
+        return app(ShopFactory::class);
+    }
 }

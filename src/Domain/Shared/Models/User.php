@@ -1,8 +1,9 @@
 <?php
 
-namespace Domain\Apply\Models;
+namespace Domain\Shared\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\Shared\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,4 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+	protected static function newFactory()
+    {
+        return app(UserFactory::class);
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Apply;
 
-use App\Models\Company;
-use App\Models\Prefecture;
-use App\Models\Recruit;
+use Domain\Apply\Models\Company;
+use Domain\Apply\Models\Prefecture;
+use Domain\Apply\Models\Recruit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

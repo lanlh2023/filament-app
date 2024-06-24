@@ -2,8 +2,7 @@
 
 namespace App\Filament\Exports;
 
-use App\Models\Recruit;
-use Filament\Actions\Exports\ExportColumn;
+use Domain\Apply\Models\Recruit;
 use Filament\Actions\Exports\Exporter;
 use Filament\Actions\Exports\Models\Export;
 

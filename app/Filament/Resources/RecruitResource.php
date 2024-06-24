@@ -54,6 +54,7 @@ class RecruitResource extends Resource
 						->searchable()
 						->live(),
 					Select::make('company_id')
+						->label('Company')
 						->options(fn (Get $get): Collection => Company::query()
 							->pluck('name', 'id'))
 						->searchable()
@@ -63,9 +64,9 @@ class RecruitResource extends Resource
 					->schema([
 						SpatieMediaLibraryFileUpload::make('media')
 							->disk('s3')
+							->maxFiles(1)
+							->minFiles(1)
 							->collection('product-images')
-							->multiple()
-							->maxFiles(5)
 							->hiddenLabel(),
 					])
 					->collapsible(),

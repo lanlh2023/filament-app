@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Apply;
 
-use App\Models\ShokushuItem;
+use Domain\Apply\Models\ShokushuItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ShokushuItemFactory extends Factory

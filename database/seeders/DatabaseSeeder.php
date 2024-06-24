@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use Domain\Apply\Models\User;
 use Database\Seeders\Apply\ApplySeeder;
+use Domain\Shared\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

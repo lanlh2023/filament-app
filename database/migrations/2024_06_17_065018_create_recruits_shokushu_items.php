@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Recruit;
-use App\Models\ShokushuItem;
+use Domain\Apply\Models\Recruit;
+use Domain\Apply\Models\ShokushuItem;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

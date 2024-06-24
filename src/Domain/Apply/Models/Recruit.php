@@ -3,7 +3,6 @@
 namespace Domain\Apply\Models;
 
 use Domain\Shared\Models\BaseModel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +11,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Recruit extends BaseModel implements HasMedia
 {
-	use HasFactory;
 	use InteractsWithMedia;
 
 	protected $guarded = [];
