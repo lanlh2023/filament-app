@@ -24,9 +24,10 @@ class UserPanelProvider extends PanelProvider
     {
         return $panel
             ->id('user')
-            ->path('user')
+            ->path(env('APP_PATH_USER'))
 			->authGuard('shops')
 			->login()
+			->domain(env('APP_DOMAIN_USER'))
 			->registration()
             ->colors([
                 'primary' => Color::Green,
