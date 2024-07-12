@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Company extends BaseModel
 {
-	protected $guarded = [];
+    protected $guarded = [];
 
-	protected $fillable = [
+    protected $fillable = [
         'name',
         'address',
-        'user_id'
+        'user_id',
     ];
 
     public function user(): BelongsTo

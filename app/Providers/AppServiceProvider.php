@@ -13,9 +13,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         if ($this->app->isLocal()) {
-        	$this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-    	}
-		// LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
+        // LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
         //     $switch
         //         ->locales(['en','ja']); // also accepts a closure
         // });

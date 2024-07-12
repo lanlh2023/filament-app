@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Entry extends BaseModel
 {
-	protected $guarded = [];
+    protected $guarded = [];
 
-	protected $fillable = [
+    protected $fillable = [
         'first_name',
         'last_name',
         'phone',
         'email',
         'company_id',
-		'recruit_id'
+        'recruit_id',
     ];
 
     public function company(): BelongsTo
@@ -23,7 +23,7 @@ class Entry extends BaseModel
         return $this->belongsTo(Company::class);
     }
 
-	public function recruit(): BelongsTo
+    public function recruit(): BelongsTo
     {
         return $this->belongsTo(Recruit::class);
     }

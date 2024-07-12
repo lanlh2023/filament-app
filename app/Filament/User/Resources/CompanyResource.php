@@ -3,7 +3,6 @@
 namespace App\Filament\User\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
 use Domain\Apply\Models\Company;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -13,7 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class CompanyResource extends Resource
@@ -22,7 +20,7 @@ class CompanyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-	// public static function getNavigationLabel(): string
+    // public static function getNavigationLabel(): string
     // {
     //     return __('filament-panels::pages/company.label');
     // }
@@ -59,31 +57,31 @@ class CompanyResource extends Resource
             ])
             ->filters([
                 Filter::make('created_at')
-					->form([
-						DatePicker::make('created_from'),
-						DatePicker::make('created_until'),
-					])
-					->query(function (Builder $query, array $data): Builder {
-						return $query
-							->when(
-								$data['created_from'],
-								fn (Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
-							)
-							->when(
-								$data['created_until'],
-								fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
-							);
-				})
+                    ->form([
+                        DatePicker::make('created_from'),
+                        DatePicker::make('created_until'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    }),
             ])
             ->actions([
-				Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    ExportBulkAction::make()
-                ]),
+                    Tables\Actions\BulkActionGroup::make([
+                        Tables\Actions\DeleteBulkAction::make(),
+                        ExportBulkAction::make(),
+                    ]),
             ]);
     }
 

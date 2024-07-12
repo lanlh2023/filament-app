@@ -85,5 +85,5 @@ return [
     */
 
     'livewire_loading_delay' => 'default',
-	'default_filesystem_disk' => 's3',
+    'default_filesystem_disk' => 's3',
 ];

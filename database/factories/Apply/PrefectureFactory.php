@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PrefectureFactory extends Factory
 {
     protected $model = Prefecture::class;
+
     /**
      * Define the model's default state.
      *

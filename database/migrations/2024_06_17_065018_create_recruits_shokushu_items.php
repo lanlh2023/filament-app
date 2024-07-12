@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('recruits_shokushu_items', function (Blueprint $table) {
             $table->id();
-			$table->foreignIdFor(Recruit::class)->constrained()->cascadeOnDelete();
-			$table->foreignIdFor(ShokushuItem::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Recruit::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(ShokushuItem::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

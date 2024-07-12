@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('prefectures', function (Blueprint $table) {
             $table->id();
-			$table->string('area_name');
-			$table->string('name');
-			$table->integer('cnt')->default(0);
+            $table->string('area_name');
+            $table->string('name');
+            $table->integer('cnt')->default(0);
             $table->timestamps();
         });
     }

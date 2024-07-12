@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ShopFactory extends Factory
 {
-	protected $model = Shop::class;
+    protected $model = Shop::class;
+
     /**
      * Define the model's default state.
      *

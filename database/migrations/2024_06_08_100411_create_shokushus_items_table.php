@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('shokushu_items', function (Blueprint $table) {
             $table->id();
-			$table->string('name');
-			$table->integer('snum');
+            $table->string('name');
+            $table->integer('snum');
             $table->timestamps();
         });
     }

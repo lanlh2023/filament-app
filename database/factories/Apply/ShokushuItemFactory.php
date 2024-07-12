@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ShokushuItemFactory extends Factory
 {
-	protected $model = ShokushuItem::class;
+    protected $model = ShokushuItem::class;
+
     /**
      * Define the model's default state.
      *

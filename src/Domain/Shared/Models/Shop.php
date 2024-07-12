@@ -21,7 +21,7 @@ class Shop extends Authenticatable
         'remember_token',
     ];
 
-	protected static function newFactory()
+    protected static function newFactory()
     {
         return app(ShopFactory::class);
     }

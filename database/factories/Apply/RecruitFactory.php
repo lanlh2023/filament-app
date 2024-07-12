@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class RecruitFactory extends Factory
 {
     protected $model = Recruit::class;
+
     /**
      * Define the model's default state.
      *
@@ -26,7 +27,7 @@ class RecruitFactory extends Factory
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),
             'company_id' => Company::factory(),
-			'prefecture_id' => Prefecture::factory(),
+            'prefecture_id' => Prefecture::factory(),
         ];
     }
 }

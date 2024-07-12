@@ -6,7 +6,7 @@ use Domain\Shared\Models\BaseModel;
 
 class Customer extends BaseModel
 {
-	protected $fillable = [
+    protected $fillable = [
         'name',
     ];
 }

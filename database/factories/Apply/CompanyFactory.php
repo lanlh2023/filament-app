@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CompanyFactory extends Factory
 {
-	protected $model = Company::class;
+    protected $model = Company::class;
+
     /**
      * Define the model's default state.
      *
@@ -22,7 +23,7 @@ class CompanyFactory extends Factory
         return [
             'name' => $this->faker->company(),
             'address' => $this->faker->address(),
-            'user_id' => User::factory()
+            'user_id' => User::factory(),
         ];
     }
 }

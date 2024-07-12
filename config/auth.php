@@ -2,7 +2,7 @@
 
 return [
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
     |--------------------------------------------------------------------------
@@ -13,12 +13,12 @@ return [
     |
     */
 
-	'defaults' => [
-		'guard' => 'web',
-		'passwords' => 'users',
-	],
+    'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'users',
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Authentication Guards
     |--------------------------------------------------------------------------
@@ -35,19 +35,19 @@ return [
     |
     */
 
-	'guards' => [
-		'web' => [
-			'driver' => 'session',
-			'provider' => 'users',
-		],
-		'shops' => [
-			'driver' => 'session',
-			'provider' => 'shops',
-			// 'cookie' => '',
-		],
-	],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'shops' => [
+            'driver' => 'session',
+            'provider' => 'shops',
+            // 'cookie' => '',
+        ],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | User Providers
     |--------------------------------------------------------------------------
@@ -64,24 +64,24 @@ return [
     |
     */
 
-	'providers' => [
-		'users' => [
-			'driver' => 'eloquent',
-			'model' => Domain\Shared\Models\User::class,
-		],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => Domain\Shared\Models\User::class,
+        ],
 
-		'shops' => [
-			'driver' => 'eloquent',
-			'model' => Domain\Shared\Models\Shop::class,
-		],
+        'shops' => [
+            'driver' => 'eloquent',
+            'model' => Domain\Shared\Models\Shop::class,
+        ],
 
-		// 'users' => [
-		//     'driver' => 'database',
-		//     'table' => 'users',
-		// ],
-	],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
     |--------------------------------------------------------------------------
@@ -100,22 +100,22 @@ return [
     |
     */
 
-	'passwords' => [
-		'users' => [
-			'provider' => 'users',
-			'table' => 'password_reset_tokens',
-			'expire' => 60,
-			'throttle' => 60,
-		],
-		'shops' => [
-			'provider' => 'shops',
-			'table' => 'password_reset_tokens',
-			'expire' => 60,
-			'throttle' => 60,
-		],
-	],
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'shops' => [
+            'provider' => 'shops',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+    ],
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
     |--------------------------------------------------------------------------
@@ -126,6 +126,6 @@ return [
     |
     */
 
-	'password_timeout' => 10800,
+    'password_timeout' => 10800,
 
 ];

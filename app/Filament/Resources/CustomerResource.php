@@ -15,20 +15,19 @@ class CustomerResource extends Resource
     protected static ?string $model = Customer::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-	
-	protected static ?string $navigationGroup = 'Shop';
-    
-	public static function form(Form $form): Form
+
+    protected static ?string $navigationGroup = 'Shop';
+
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-				Forms\Components\TextInput::make('name_hahah')->label('lan')
+                Forms\Components\TextInput::make('name_hahah')->label('lan')
                     ->required()
-                    ->maxLength(255)
-				,
+                    ->maxLength(255),
             ])->inlineLabel();
     }
 
